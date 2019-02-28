@@ -49,6 +49,14 @@
         font-weight: bold;
         cursor: pointer;
     }
+    .modal__img {
+        position: relative;
+        display: block;
+        width: 80%;
+        height: 80%;
+        margin: 0 auto;
+        padding: 10px;
+    }
 </style>
 <?php
 function delete($images) {
@@ -72,7 +80,7 @@ function delete($images) {
         //$images = delete($images);
         for ($i = 2; $i< count($images); $i++) { ?>
             <a href="<?=$dir."/".$images[$i]?>" target="_blank" class="gallery__item">
-                <img src="<?=$dir."/".$images[$i]?>" alt="" class="gallery__img">
+                <img src="<?=$dir."/".$images[$i]?>" data-big="<?=$dir."/".$images[$i]?>" alt="" class="gallery__img">
             </a>
         <?php }?>
     </div>
@@ -96,7 +104,6 @@ function delete($images) {
             modal.classList.add(this.classModal);
             const modalImg = new Image();
             modalImg.classList.add(this.classModalImg);
-            modalImg.src =;
             modal.appendChild(modalImg);
             modal.appendChild(this._createClose('modal__close'));
             modalBG.appendChild(modal);
@@ -119,15 +126,23 @@ function delete($images) {
                 return;
             }
             document.querySelector(this.gallery).appendChild(this._createModal());
+            console.log(event);
+            this._openModalImg(clickImg.dataset.big);
         }
 
         _click() {
             document.querySelector(this.gallery).addEventListener('click', event => this._callModal(event));
         }
+
+        _openModalImg(src) {
+
+            document.querySelector(`.${this.classModalImg}`).src = src;
+            console.log(document.querySelector(this.classModalImg));
+        }
     }
 
     window.onload = () => {
-        const modal = new Modal('modal', 'modal__content', 'modal__img', '', '.gallery');
+        const modal = new Modal('modal', 'modal__content', 'modal__img', 'link', '.gallery');
         modal._click();
     }
 </script>
