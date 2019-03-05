@@ -32,23 +32,3 @@ function render($file, $variables = [])
 
 	return $templateContent;
 }
-
-
-function getGallery() {
-
-}
-
-function createGallery()
-{
-	$result = '';
-	$images = scandir(WWW_DIR . IMG_DIR);
-
-	foreach ($images as $image) {
-		if(is_file(WWW_DIR . IMG_DIR . $image)) {
-			$result .= render(TEMPLATES_DIR . 'galleryItem.tpl', [
-				'src' => IMG_DIR . $image
-			]);
-		}
-	}
-	return $result;
-}
