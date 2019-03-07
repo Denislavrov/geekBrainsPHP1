@@ -1,1 +1,1 @@
-<img src="{{SRC}}" alt="image" style="max-width: 300px; max-height: 300px" data-big="{{SRC}}" class="gallery__img"/></a>
+<a href="./image.php?id={{ID}}"><img src="{{URL}}" alt="image-{{ID}}" style="max-width: 300px; max-height: 300px"/></a>

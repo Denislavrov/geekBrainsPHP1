@@ -8,8 +8,9 @@
 	<header>
 		<ul>
 			<li><a href="./">Главная</a></li>
+			<li><a href="./gallery.php">Галлерея</a></li>
+			<li><a href="./news.php">Новости</a></li>
 			<li><a href="./contacts.php">Контакты</a></li>
-			<li><a href="./galleryItem.php">gallery</a></li>
 		</ul>
 	</header>
 	<h1>{{H1}}</h1>
