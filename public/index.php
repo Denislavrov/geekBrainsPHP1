@@ -42,3 +42,83 @@ if(!empty($_FILES['userfile']) && !$_FILES['userfile']['error']) {
 	Отправить этот файл: <input name="userfile" type="file" />
 	<input type="submit" value="Send File" />
 </form>
+<!----TASK1------->
+<form enctype="multipart/form-data" action="" method="POST">
+    <input type="text" name="value1" />
+    <select name="operation" id="operation">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="text" name="value2">
+    <input type="submit" value="=" name="result">
+</form>
+<?php
+
+$val1 = $_POST['value1'];
+$val2 = $_POST['value2'];
+$select = $_POST['operation'];
+
+function mathOperation($arg1, $arg2, $operation) {
+    switch ($operation) {
+        case $operation == '+':
+            echo $arg1 + $arg2;
+            break;
+        case  $operation == "-":
+            echo $arg1 - $arg2;
+            break;
+        case   $operation == "*":
+            echo $arg1 * $arg2;
+            break;
+        case  $operation == "/":
+            if(!$arg2 == 0) {
+                echo $arg1 / $arg2;
+                break;
+            } else {
+                echo 'error!';
+                break;
+            }
+    }
+}
+
+mathOperation($val1, $val2, $select);
+?>
+
+
+<!--TASK2-->
+<form enctype="multipart/form-data" action="" method="POST">
+    <input type="text" name="value3" />
+    <input type="text" name="value4"/>
+    <input type="submit" name="plus" value="+">
+    <input type="submit" name="subtraction" value="-">
+    <input type="submit" name="multiplication" value="*">
+    <input type="submit" name="division" value="/">
+</form>
+
+<?php
+
+function calc(){
+$val3 = $_POST['value3'];
+$val4 = $_POST['value4'];
+$plus = $_POST['plus'];
+$subtraction = $_POST['subtraction'];
+$mult = $_POST['multiplication'];
+$div = $_POST['division'];
+if($plus) {
+        echo $val3 + $val4;
+    } else if($subtraction) {
+        echo $val3 - $val4;
+    } else if($mult) {
+        echo $val3 * $val4;
+    } else {
+        if(!$val4 == 0) {
+            echo $val3 / $val4;
+            } else {
+            echo 'error!';
+             }
+    }
+}
+calc();
+?>
+
